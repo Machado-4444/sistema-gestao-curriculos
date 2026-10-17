@@ -1,69 +1,86 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { Header } from '../components/heather'
+import { Footer } from '../components/footer'
+import { Button } from '../components/ui/button'
+import { FileText, Users, UserPlus, ShieldCheck, Zap, Sparkles } from 'lucide-react'
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+      <Header />
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden py-20 md:py-32 bg-gradient-to-b from-blue-50/50 to-slate-50">
+          <div className="container mx-auto px-4 text-center max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-6">
+              <Sparkles className="h-4 w-4" />
+              <span>Sistema Profissional de Gestão de Currículos</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
+              Gerencie talentos e currículos com <span className="text-blue-600">agilidade e eficiência</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
+              Plataforma desenvolvida para otimizar processos de recrutamento, com validação rigorosa, formulários dinâmicos e experiência moderna em Next.js.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/sistema/paginas/curriculos">
+                <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white gap-2">
+                  <Users className="h-5 w-5" />
+                  Ver Currículos Cadastrados
+                </Button>
+              </Link>
+
+              <Link href="/sistema/paginas/curriculos/novo">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto gap-2 border-slate-300">
+                  <UserPlus className="h-5 w-5" />
+                  Cadastrar Novo Currículo
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-16 container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-xl border shadow-sm flex flex-col items-start">
+              <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mb-4">
+                <FileText className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Campos Dinâmicos</h3>
+              <p className="text-slate-600">
+                Adicione e remova experiências profissionais e formações acadêmicas de forma fluida com validação instantânea pelo Yup.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl border shadow-sm flex flex-col items-start">
+              <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mb-4">
+                <ShieldCheck className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Validação Rigorosa</h3>
+              <p className="text-slate-600">
+                Garantia de dados consistentes através de máscaras de entrada automatizadas (CPF, telefones e datas) e feedback via Sonner.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl border shadow-sm flex flex-col items-start">
+              <div className="p-3 bg-blue-50 text-blue-600 rounded-lg mb-4">
+                <Zap className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Busca em Tempo Real</h3>
+              <p className="text-slate-600">
+                Filtre listagens instantaneamente por nome ou cargo desejado com excelente desempenho de navegação.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <Footer />
     </div>
-  );
+  )
 }
